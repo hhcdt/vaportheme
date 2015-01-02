@@ -1,0 +1,808 @@
+<!DOCTYPE HTML>
+	<html lang="en">
+
+	<head>
+
+	<!-- SCM Music Player http://scmplayer.net -->
+
+<script type="text/javascript" src="http://scmplayer.net/script.js"
+data-config="{'skin':'skins/tunes/skin.css','volume':50,'autoplay':true,'shuffle':false,'repeat':1,'placement':'bottom','showplaylist':false,'playlist':[{'title':'THE ONLY SONG YOU NEED','url':'http://youtu.be/cU8HrO7XuiE'}]}" ></script>
+
+<!-- SCM Music Player script end -->
+
+
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>{Title}</title>
+
+		<!—[if IE]>
+		        <script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
+		<![endif]—>
+
+		<link rel="shortcut icon" href="{Favicon}">
+		<link rel="alternate" type="application/rss+xml" href="{RSS}">
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+		<script>
+	    $(function(){
+	        $(".heading").mousedown(function(){
+	            $(".heading").removeClass('selected');
+	            $(this).addClass('selected');
+	        });
+
+	        // Getter
+            $( "#dialog" ).dialog({
+      autoOpen: false
+            });
+
+            $( "#dialog2" ).dialog({
+      autoOpen: false
+            });
+
+	        $('.theme').click(function(){
+	            $("#dialog").dialog("open");
+	        });
+
+	        $('.about').click(function(){
+	            $("#dialog2").dialog("open");
+	        });
+
+	        $("#bust").animate({"right":(($(window).width()/2) - 500)}, 11200);
+	        $("section").draggable({
+	            handle: '.heading'
+	        });
+
+	        $(window).resize(function(){
+	            $("#bust").css("right",($(window).width()/2 - 500));
+	        });
+
+
+
+	    })
+	</script>
+
+	<script type="text/javascript"
+src="http://codysherman.com/tools/infinite-scrolling/code" ></script>
+
+		{block:Description}
+			<meta name ="description" content="{MetaDescription}">
+		{/block:Description}
+
+
+		<style>
+		#player,#contentW,#playerW{
+		    display: none !important;
+		}
+
+				body {
+					background: #FFF;
+					font-family: Helvetica, Arial, sans-serif;
+					font-size: 1.5em;
+
+				}
+
+				*{
+				    font-family: 'Source Sans Pro', sans-serif;
+				}
+
+	            article, aside, dialog, figure, footer, header,
+	            hgroup, menu, nav, section { display: block; }
+
+				header {}
+
+				footer {}
+
+				aside {}
+
+				menu {}
+
+				nav {}
+
+				body{
+				    background: rgb(255,120,153); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(255,120,153,1) 0%, rgba(255,183,200,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,120,153,1)), color-stop(100%,rgba(255,183,200,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(255,120,153,1) 0%,rgba(255,183,200,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(255,120,153,1) 0%,rgba(255,183,200,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(255,120,153,1) 0%,rgba(255,183,200,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(255,120,153,1) 0%,rgba(255,183,200,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7899', endColorstr='#ffb7c8',GradientType=0 ); /* IE6-9 */
+background-attachment: fixed;
+margin:0;
+				}
+
+        article{
+          background: #FFFFFF;
+          border: solid 3px #BDBDBD;
+          border-bottom: none;
+          overflow: hidden;
+
+        }
+
+        .wrapper{
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+
+        /* p is description */
+        p{
+            font-size: 14px;
+            padding: 4px 24px;
+            margin: 0 0;
+        }
+
+        p img{
+            max-width: 300px;
+        }
+
+        h2{
+            font-size: 18px;
+            padding: 0 24px;
+            margin-bottom: 0;
+        }
+
+        /*heading is ms bar*/
+        .heading{
+            background: rgb(123,123,123); /* Old browsers */
+            background: -moz-linear-gradient(left,  rgba(123,123,123,1) 0%, rgba(177,177,177,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(123,123,123,1)), color-stop(100%,rgba(177,177,177,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(left,  rgba(123,123,123,1) 0%,rgba(177,177,177,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(left,  rgba(123,123,123,1) 0%,rgba(177,177,177,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(left,  rgba(123,123,123,1) 0%,rgba(177,177,177,1) 100%); /* IE10+ */
+            background: linear-gradient(to right,  rgba(123,123,123,1) 0%,rgba(177,177,177,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7b7b7b', endColorstr='#b1b1b1',GradientType=1 ); /* IE6-9 */
+
+            color: #C2C2C2;
+            text-decoration: none;
+            font-size: 18px;
+            text-indent: 12px;
+            padding: 4px 0;
+
+            border-bottom: #BDBDBD solid 2px;
+            box-shadow: 0px 0px 0px 2px #A0A0A0;
+            cursor: pointer;
+
+
+        }
+
+        .heading a{
+            color: #C2C2C2 !important;
+            text-decoration: none !important;
+        }
+
+        .selected a{
+            color: white;
+        }
+
+        .singleimage{
+            width: 100%;
+        }
+
+        .selected{
+            background: rgb(3,3,124); /* Old browsers */
+            background: -moz-linear-gradient(left,  rgba(3,3,124,1) 0%, rgba(8,132,206,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(3,3,124,1)), color-stop(100%,rgba(8,132,206,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(left,  rgba(3,3,124,1) 0%,rgba(8,132,206,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(left,  rgba(3,3,124,1) 0%,rgba(8,132,206,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(left,  rgba(3,3,124,1) 0%,rgba(8,132,206,1) 100%); /* IE10+ */
+            background: linear-gradient(to right,  rgba(3,3,124,1) 0%,rgba(8,132,206,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#03037c', endColorstr='#0884ce',GradientType=1 ); /* IE6-9 */
+            color: white;
+        }
+
+    table.head{
+        position: fixed;
+        background: #BDBDBD;
+        width: 100%;
+        margin-bottom: 48px;
+        border-bottom: 2px solid #A0A0A0;
+    }
+
+     .head td{
+        border-bottom: 2px solid #A0A0A0;
+        border-right: 2px solid #A0A0A0;
+        border-top: 2px solid #FBFBFB;
+        border-left: 2px solid #FBFBFB;
+        display: inline-block;
+        font-size: 18px;
+        margin: 2px 2px;
+        cursor: pointer;
+    }
+
+     td div{
+        margin: 2px 8px;
+    }
+
+    .head td a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .horizontal-border{
+        background: #BDBDBD;
+        border-bottom: 2px solid #A0A0A0;
+        width: 100%;
+        height: 2px;
+        margin-top: -5px;
+    }
+
+    .notes{
+        background: #BDBDBD;
+        width: 100%;
+        font-size: 18px;
+
+    }
+
+    .notes td{
+        border-top: 2px solid #A0A0A0;
+        border-left: 2px solid #A0A0A0;
+        border-bottom: 2px solid #FBFBFB;
+        border-right: 2px solid #FBFBFB;
+        padding: 2px;
+        text-indent: 4px;
+    }
+
+
+
+    .extraborder{
+        border: 2px white solid;
+        border-bottom: 2px #A0A0A0 solid;
+        border-right: 2px #A0A0A0 solid;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+        margin-bottom: 24px;
+
+    }
+
+    blockquote{
+        border-left: 2px #A0A0A0 solid;
+        margin-left: 12px;
+    }
+
+    .black,.white{
+        float: left;
+        width: 6.25%;
+        height: 50px;
+    }
+
+    .row{
+
+    }
+
+    .black{
+        background: black;
+        box-shadow: 3px 5px 13px rgba(0,0,0,0.5);
+    }
+
+    .container2{
+        width: 100%;
+        overflow: hidden;
+
+    }
+
+    .container{
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        z-index: -1000;
+    }
+
+    .pepsi{
+        position: fixed;
+        text-align: right;
+        margin-left: -400px;
+        font-size: 128px;
+        color: #6EFFB9;
+        text-shadow: 3px 3px 8px #61C094;
+    }
+
+
+	  </style>
+
+
+
+	</head>
+
+	<body>
+
+	<div id="dialog" title="Theme">
+  <p>i made this theme.  if u want it, too bad. it's awful im not sharing it.</p>
+</div>
+
+<div id="dialog2" title="About">
+  <p>
+      hi whats up</br>
+      male/18/cool</br>
+      im a designer and i like css</br>
+      aesthetic </br></br>
+      i post stupid stuff</br>
+      i tag blood/gore/nsfw
+
+  </p>
+</div>
+
+
+    <table class="head">
+        <tr>
+    		<td>
+    			<div><a href="{BlogURL}"> {Title} </a></div>
+    		</td>
+    		{block:AskEnabled}<td><a href="{BlogURL}ask"><div>{AskLabel}</div></a></td>{/block:AskEnabled}
+
+    		{block:PreviousPage} <td><a href="{PreviousPage}"> <div>&#171; Previous</div></a></td> {/block:PreviousPage}
+
+					{block:NextPage} <td><a href="{NextPage}"><div>Next &#187;</div> </a></td> {/block:NextPage}
+					<td></td><td></td><td></td>
+					<td class="about"><div>About</div></td>
+
+					<td class="theme"><div>Theme</div></td>
+
+
+
+    	</tr>
+	</table>
+
+<!-- post container -->
+</br></br></br>
+
+<div class="wrapper">
+
+<div class="pepsi">
+    ペプシ
+</div>
+
+<div class="pepsi">
+    <img style="margin-top: 300px; padding-left: 100px;" src="http://octo.pics/68/file.gif"/>
+</div>
+
+
+
+
+
+	{block:Posts}
+		<section>
+
+				{block:Text}
+				<div class="extraborder">
+					<article>
+
+
+					<div class="heading">{block:Title}{Title}{/block:Title}{block:Date} {Month}{/block:Date}.rtf - Microsoft Word 98</div>
+
+						{Body}
+					</article>
+					<table class="notes">
+                    	    <tr>
+                    	        <td class="datetime">
+                    		{block:Date}{Month} {DayOfMonth} {Year} {/block:Date}						    </td>
+
+                    		    <td class="notecount">
+                    	    {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+                    	        </td>
+
+                    		    <td class="permalink">
+                    	    <a href="{Permalink}"> permalink </a>
+                    		    </td>
+
+                            </tr>
+                    </table>
+                    </div>
+				{/block:Text}
+
+
+
+
+
+				{block:Answer}
+				<div class="extraborder">
+					<article>
+					<div class="heading">{block:Title}{Title}{/block:Title}{block:Date} {Month}{/block:Date}.rtf - Microsoft Word 98</div>
+
+						{Question}
+						{Asker}
+						{Answer}
+					</article>
+
+					<table class="notes">
+                    	    <tr>
+                    	        <td class="datetime">
+                    		{block:Date}{Month} {DayOfMonth} {Year} {/block:Date}						    </td>
+
+                    		    <td class="notecount">
+                    	    {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+                    	        </td>
+
+                    		    <td class="permalink">
+                    	    <a href="{Permalink}"> permalink </a>
+                    		    </td>
+
+                            </tr>
+                    </table>
+                    </div>
+				{/block:Answer}
+
+
+
+
+
+
+				{block:Photo}
+				<div class="extraborder">
+					<article>
+					<div class="heading">{block:Date}{PhotoWidth-HighRes}{Month}{/block:Date}.bmp - Microsoft Paint</div>
+						<img class="singleimage" src="{PhotoURL-500}" alt="{PhotoAlt}">
+						<div class="horizontal-border"></div>
+
+						{block:Caption}
+							{Caption}
+						{/block:Caption}
+
+					</article>
+					<table class="notes">
+						    <tr>
+						        <td class="datetime">
+							{block:Date}{Month} {DayOfMonth} {Year} {/block:Date}						    </td>
+
+							    <td class="notecount">
+						    {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+						        </td>
+
+							    <td class="permalink">
+						    <a href="{Permalink}"> permalink </a>
+							    </td>
+
+                            </tr>
+                    </table>
+                    </div>
+				{/block:Photo}
+
+
+
+
+
+
+				{block:Link}
+                <div class="extraborder">
+					<article>
+                    <div class="heading">{block:Date}{URL}.html - Internet Explorer</div>
+						<h2><a href="{URL}" {Target}>{Name}</a></h2>
+
+						{block:Description}
+							{Description}
+						{/block:Description}
+					</article>
+					<table class="notes">
+						    <tr>
+						        <td class="datetime">
+							{block:Date}{Month} {DayOfMonth} {Year} {/block:Date}						    </td>
+
+							    <td class="notecount">
+						    {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+						        </td>
+
+							    <td class="permalink">
+						    <a href="{Permalink}"> permalink </a>
+							    </td>
+
+                            </tr>
+                    </table>
+				{/block:Link}
+
+
+
+
+
+
+
+
+				{block:Video}
+				<div class="extraborder">
+					<article>
+					<div class="heading">dancing-man.wmv - Windows Media Player</div>
+						{Video-500}
+
+						{block:Caption}
+							{Caption}
+						{/block:Caption}
+					</article>
+                    <table class="notes">
+                    	    <tr>
+                    	        <td class="datetime">
+                    		{block:Date}{Month} {DayOfMonth} {Year} {/block:Date}						    </td>
+
+                    		    <td class="notecount">
+                    	    {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+                    	        </td>
+
+                    		    <td class="permalink">
+                    	    <a href="{Permalink}"> permalink </a>
+                    		    </td>
+
+                            </tr>
+                    </table>
+                    </div>
+				{/block:Video}
+
+
+
+
+
+
+
+				{block:Audio}
+				<div class="extraborder">
+
+					<article>
+					<div class="heading">quake_shoot_256.wav - Windows Media Player</div>
+
+						{AudioPlayerWhite}
+
+						{block:Caption}
+							{Caption}
+						{/block:Caption}
+					</article>
+                    <table class="notes">
+                    	    <tr>
+                    	        <td class="datetime">
+                    		{block:Date}{Month} {DayOfMonth} {Year} {/block:Date}						    </td>
+
+                    		    <td class="notecount">
+                    	    {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+                    	        </td>
+
+                    		    <td class="permalink">
+                    	    <a href="{Permalink}"> permalink </a>
+                    		    </td>
+
+                            </tr>
+                    </table>
+                    </div>
+				{/block:Audio}
+
+
+
+
+
+
+
+
+
+				{block:Quote}
+                <div class="extraborder">
+					<article>
+					<div class="heading">{block:Source}{Source}{/block:Source}.txt - Notepad</div>
+
+						<p>{Quote}</p>
+
+
+                        </article>
+						<table class="notes">
+                    	    <tr>
+                    	        <td class="datetime">
+                    		{block:Date}{Month} {DayOfMonth} {Year} {/block:Date}						    </td>
+
+                    		    <td class="notecount">
+                    	    {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+                    	        </td>
+
+                    		    <td class="permalink">
+                    	    <a href="{Permalink}">{block:Source}
+							{Source}
+
+						{/block:Source} </a>
+                    		    </td>
+
+                            </tr>
+                    </table>
+                    </div>
+				{/block:Quote}
+
+
+
+
+
+
+
+
+				{block:Photoset}
+                <div class="extraborder">
+					<article>
+					<div class="heading">{block:Date}{Month} {DayOfMonth} {Year} {/block:Date}.png - Paint
+					</div>
+
+						{Photoset-500}
+
+						{block:Caption}
+							{Caption}
+						{/block:Caption}
+					</article>
+					<table class="notes">
+                    	    <tr>
+                    	        <td class="datetime">
+                    		{block:Date}{Month} {DayOfMonth} {Year} {/block:Date}						    </td>
+
+                    		    <td class="notecount">
+                    	    {block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}
+                    	        </td>
+
+                    		    <td class="permalink">
+                    	    <a href="{Permalink}"> permalink </a>
+                    		    </td>
+
+                            </tr>
+                    </table>
+                    </div>
+				{/block:Photoset}
+
+
+
+
+
+
+		</section>
+	{/block:Posts}
+
+
+	</div>
+
+
+		<footer>
+					<nav>
+
+					</nav>
+		</footer>
+
+
+<img id="bust" style="position: fixed; bottom: 0; right: 40px; height: 300px;" src="http://octo.pics/65/file.png"  />
+
+<div class="container">
+<div class="container2">
+    <div class="row">
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+    </div>
+    <div class="row">
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+        <div class="white">
+        </div>
+        <div class="black">
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+	</body>
+	</html>
